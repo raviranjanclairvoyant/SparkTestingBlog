@@ -3,6 +3,7 @@ import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.junit.Before;
 import org.junit.Test;
+import org.scalatest.FunSuite;
 import com.holdenkarau.spark.testing.DataframeGenerator;
 import com.holdenkarau.spark.testing.DatasetGenerator;
 import com.holdenkarau.spark.testing.JavaDataFrameSuiteBase;
@@ -40,10 +41,11 @@ public class SparkBatchJobTesting extends JavaDatasetSuiteBase {
 
     @Test
     public void testInputDataFrameAndTestDataFrame() {
+
         SparkBatchJobApplication readCSV = new SparkBatchJobApplication();
         Dataset<Row>InputDF= readCSV.execute(sparkSession);
 
-        assertDataFrameNoOrderEquals(InputDF,testDataDF);
+        assertDataFrameNoOrderEquals(InputDF,testDataDF);       // calling assert directly on dataframe
         //assertDataFrameEquals(InputDF,testDataDF);
         //assertDataFrameDataEquals(InputDF,testDataDF);
         //assertDataFrameApproximateEquals(InputDF,testDataDF,0);
