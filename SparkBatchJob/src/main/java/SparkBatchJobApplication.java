@@ -14,7 +14,6 @@ public class SparkBatchJobApplication {
                 .enableHiveSupport()
                 .master("local[*]")
                 .getOrCreate();
-        sparkSession.sparkContext().setLogLevel("ERROR");
 
         Dataset<Row> targetDataFrame = execute(sparkSession);
         targetDataFrame.show();
